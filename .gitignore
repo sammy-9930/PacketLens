@@ -1,0 +1,5 @@
+/cpp-sniffer
+/sniffer-test
+/*.o
+/build/
+/sniffer-benchmark
