@@ -1,9 +1,9 @@
-# C++ Sniffer
+# PacketLens
 
 [Play the demo](https://sammy-9930.github.io/PacketLens/) · [View the architecture](#architecture) ·
 [Reproduce the queue benchmark](#per-worker-queue-capacity) · [Build and capture](#build-and-capture)
 
-C++ Sniffer captures IPv4 and IPv6 packets on one Linux network interface and
+PacketLens is a C++ based sniffer that captures IPv4 and IPv6 packets on one Linux network interface and
 reports throughput and packet counts about once per second. Use
 `--packet-lines` to inspect addresses, IP protocols, and packet lengths. It recognizes TCP, UDP, ICMP, ICMPv6, IGMP, SCTP, and ESP.
 Unmapped protocol numbers appear as `Unknown`. For IPv6 it follows common
