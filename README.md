@@ -1,6 +1,6 @@
 # C++ Sniffer
 
-[Play the demo](https://sammy-9930.github.io/PacketLens-Demo/) · [View the architecture](#architecture) ·
+[Play the demo](https://sammy-9930.github.io/PacketLens/) · [View the architecture](#architecture) ·
 [Reproduce the queue benchmark](#per-worker-queue-capacity) · [Build and capture](#build-and-capture)
 
 C++ Sniffer captures IPv4 and IPv6 packets on one Linux network interface and
@@ -337,15 +337,14 @@ trace is still available from the same page.
 
 ### CI and GitHub Pages
 
-The repository-level **Packet Sniffer** GitHub Actions workflow builds the
+The **PacketLens CI/CD** workflow builds the
 C++14 CLI, tests, and benchmark on Ubuntu, checks packet counts and bytes
-through PCAP replay, and verifies the bundled demo trace. Run the PCAP
+through PCAP replay, and verifies the bundled demo trace on pushes and pull
+requests targeting `main`. Run the PCAP
 check locally with `make` followed by `python3 tests/check_pcap_replay.py`.
 
-To publish using the workflow, place it on the repository's default
-branch. A maintainer can select **GitHub Actions** in **Settings → Pages**,
-then run **Packet Sniffer** from the **Actions** tab with **Publish the
-demo to GitHub Pages** checked. The deployment job shows the resulting URL.
+After the checks pass on `main`, the workflow publishes the dashboard and
+benchmark report to GitHub Pages. The deployment job shows the site URL.
 [GitHub Pages workflow setup](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 
 ### Metrics-only vs per-packet output
