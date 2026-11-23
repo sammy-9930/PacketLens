@@ -27,6 +27,14 @@ jobs:
         run: |
           python3 demo/generate_trace.py
           git diff --exit-code -- demo/trace.js
+      - name: Build Linux CLI package
+        run: make package
+      - name: Upload Linux CLI package
+        uses: actions/upload-artifact@v7
+        with:
+          path: build/packetlens-linux-x86_64.tar.gz
+          archive: false
+          if-no-files-found: error
       - name: Package dashboard
         if: github.ref == 'refs/heads/main'
         run: |

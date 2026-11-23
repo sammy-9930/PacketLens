@@ -17,8 +17,9 @@ CLI_OBJECTS := build/src/main.o build/src/config/config.o $(LINUX_SOCKET_OBJECTS
 TEST_OBJECTS := build/tests/sniffer_test.o build/tests/packet_sources_test.o
 
 BENCHMARK_OBJECTS := build/benchmarks/capture_benchmark.o
+PACKAGE := build/packetlens-linux-$(shell uname -m).tar.gz
 
-.PHONY: all test benchmark clean
+.PHONY: all test benchmark package clean
 all: cpp-sniffer
 
 cpp-sniffer: $(CLI_OBJECTS) $(CORE_OBJECTS)
@@ -47,6 +48,13 @@ benchmark: sniffer-benchmark
 
 test: sniffer-test
 	./sniffer-test
+
+package: $(PACKAGE)
+
+$(PACKAGE): cpp-sniffer README.md config/example.conf
+	mkdir -p $(@D)
+	tar -czf $@.tmp $^
+	mv $@.tmp $@
 
 clean:
 	$(RM) -r build

@@ -343,6 +343,11 @@ through PCAP replay, and verifies the bundled demo trace on pushes and pull
 requests targeting `main`. Run the PCAP
 check locally with `make` followed by `python3 tests/check_pcap_replay.py`.
 
+After the checks pass, download `packetlens-linux-x86_64.tar.gz` from the
+run's **Artifacts** section. The archive contains the Ubuntu 24.04 x86-64
+CLI, the example configuration, and this README. To build the archive
+locally, run `make package` and look in `build/`.
+
 After the checks pass on `main`, the workflow publishes the dashboard and
 benchmark report to GitHub Pages. The deployment job shows the site URL.
 [GitHub Pages workflow setup](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
