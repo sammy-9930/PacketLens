@@ -1,6 +1,6 @@
 # C++ Sniffer
 
-[Play the demo locally](demo/index.html) · [View the architecture](#architecture) ·
+[Play the demo](https://sammy-9930.github.io/PacketLens-Demo/) · [View the architecture](#architecture) ·
 [Reproduce the queue benchmark](#per-worker-queue-capacity) · [Build and capture](#build-and-capture)
 
 C++ Sniffer captures IPv4 and IPv6 packets on one Linux network interface and
@@ -289,7 +289,7 @@ python3 benchmarks/render_report.py rates.json docs/benchmark-report.html
 
 ## Local replay dashboard
 
-Open [demo/index.html](demo/index.html) in a browser and press **Play**.
+Open `demo/index.html` from your local checkout in a browser and press **Play**.
 The timeline shows decoded IP Mb/s, packets per second, and packet counts by
 IP protocol for the selected interval. **Jump to peak rate** finds the
 highest-throughput interval in either the sample or an imported recording. Pause, scrub, or change speed to explore the 48-second
