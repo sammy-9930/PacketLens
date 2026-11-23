@@ -1,0 +1,7 @@
+*
+!Dockerfile
+!Makefile
+!include/
+!include/**
+!src/
+!src/**

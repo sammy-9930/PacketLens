@@ -348,6 +348,15 @@ run's **Artifacts** section. The archive contains the Ubuntu 24.04 x86-64
 CLI, the example configuration, and this README. To build the archive
 locally, run `make package` and look in `build/`.
 
+Successful runs on `main` also publish the CLI container to
+[GitHub Packages](https://github.com/users/sammy-9930/packages/container/package/packetlens),
+tagged with the commit SHA and `latest`. For a package that requires sign-in,
+authenticate to `ghcr.io` before pulling.
+
+```sh
+docker run --rm ghcr.io/sammy-9930/packetlens:latest --help
+```
+
 After the checks pass on `main`, the workflow publishes the dashboard and
 benchmark report to GitHub Pages. The deployment job shows the site URL.
 [GitHub Pages workflow setup](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)

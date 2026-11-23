@@ -47,6 +47,30 @@ jobs:
         with:
           path: build/pages
 
+  publish-container:
+    if: github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
+    env:
+      IMAGE: ghcr.io/sammy-9930/packetlens
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build and smoke-test the image
+        run: |
+          docker build --label "org.opencontainers.image.revision=$GITHUB_SHA" -t "$IMAGE:$GITHUB_SHA" .
+          docker run --rm "$IMAGE:$GITHUB_SHA" --help
+      - name: Publish to GitHub Packages
+        env:
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          printf '%s' "$GHCR_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker tag "$IMAGE:$GITHUB_SHA" "$IMAGE:latest"
+          docker push "$IMAGE:$GITHUB_SHA"
+          docker push "$IMAGE:latest"
+
   deploy:
     if: github.ref == 'refs/heads/main'
     needs: verify
